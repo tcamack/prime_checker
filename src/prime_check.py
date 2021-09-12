@@ -25,13 +25,13 @@ def defRange(): #USER DEFINES RANGE FOR TESTING
         invalid_number = False
         minimum = int(str_minimum)
 
-        print("Enter a maximum number to check:")
+        print("\n" + "Enter a maximum number to check:")
         str_maximum = str(input())
         if str_maximum.isnumeric() and int(str_maximum) > int(str_minimum):
             invalid_number = False
             maximum = int(str_maximum)
             clear()
-            print("Testing " + str_minimum + " -> " + str_maximum)
+            print("Testing " + str_minimum + " -> " + str_maximum + "\n")
             primeSolver()
         else:
             invalid_number = True
@@ -43,6 +43,8 @@ def defRange(): #USER DEFINES RANGE FOR TESTING
         defRange()
 
 def primeSolver(): #MAIN MATH, NESTED FOR LOOP
+    global length
+
     for value in range(minimum, maximum + 1):
         if value > 1:
             for i in range(2, value):
@@ -50,18 +52,20 @@ def primeSolver(): #MAIN MATH, NESTED FOR LOOP
                     break
             else:
                 list.append(value)
+    length = len(list)
     print("Prime numbers found in range from " + str_minimum + " -> " + str_maximum)
+    print("\n" + "Total prime numbers found: " + str(length))
     print(list)
     output()
 
 
 def output(): #OUTPUT DATA TO EXTERNAL FILE
     print("\n" + "Saving prime numbers to file...") #INFORM USER FILE IS BEING CREATED
-    fileName = time.strftime("%Y%m%d" + "-" + "%H%M%S")
     outNum = "\n".join(str(n) for n in list)
-    
-    f = open(fileName + ".txt", "w")
+
+    f = open(time.strftime("%Y%m%d" + "-" + "%H%M%S") + ".txt", "w")
     f.write("Prime numbers found in range from " + str_minimum + " -> " + str_maximum)
+    f.write("\n" + "Total prime numbers found: " + str(length))
     f.write("\n" + outNum)
 
     f.close()
@@ -77,7 +81,7 @@ def restart(): #USER INPUT TO RESTART PROGRAM
     if invalid_restart == True:
         print("")
         print("Please enter 'yes' or 'no'")
-    
+
     str_restart = str(input()).lower()
 
     if str_restart == "yes":
