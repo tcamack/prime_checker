@@ -1,6 +1,5 @@
 import os
 import os.path
-import math
 import time
 
 invalid_number = False
