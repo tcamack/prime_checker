@@ -1,4 +1,4 @@
-"""Module for finding every prime number within a specified range."""
+"""Script for finding every prime number within a specified range."""
 import argparse
 import os
 
@@ -72,7 +72,6 @@ def logger(path, primes, output_str, output_length):
         outfile.write(f'{output_str}')
         outfile.write(f'\n{"*" * output_length}\n')
         outfile.write('\n'.join(str(n) for n in primes))
-    return
 
 
 class SmartFormatter(argparse.HelpFormatter):
@@ -96,7 +95,7 @@ if __name__ == '__main__':
                         default=1,
                         type=positive,
                         help='SF|Minimum number to check as prime.\n'
-                             'Must be a positive integer, default is 1.\n')
+                             'Must be a positive integer, default is 1.')
     parser.add_argument('--path',
                         type=str,
                         default='./logs',
