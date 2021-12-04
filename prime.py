@@ -107,7 +107,7 @@ if __name__ == '__main__':
                         help='Generate external file listing every prime.')
     parser.add_argument('--list',
                         action=argparse.BooleanOptionalAction,
-                        help='List prime numbers in CLI.')
+                        help='List prime numbers in the CLI.')
 
     args = parser.parse_args()
     print(prime(args.max, args.min, args.path, args.log, args.list))
